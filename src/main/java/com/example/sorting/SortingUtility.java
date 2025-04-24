@@ -5,14 +5,14 @@ public class SortingUtility {
 // Complete the bodies of the already implemented methods in SortingUtility
     public static <T extends Comparable<T>> void gnomeSort(T[] data) {
 
-        int index = 0;
+        int pos = 0;
 
-        while (index < data.length) {
-            if (index == 0 || data[index].compareTo(data[index - 1]) >= 0) {
-                index++;
+        while (pos < data.length) {
+            if (pos == 0 || data[pos].compareTo(data[pos - 1]) >= 0) {
+                pos++;
             } else {
-                swap(data, index, index - 1);
-                index--;
+                swap(data, pos, pos - 1);
+                pos--;
             }
         }
     }
@@ -57,22 +57,22 @@ public class SortingUtility {
     }
 
 
-    public static <T extends Comparable<T>> void shellSort(T[] data) {
+    public static <T extends Comparable<T>> void shellSort(T[] a) {
 
-        int n = data.length;
+        int n = a.length;
 
         // Start with a large gap, then reduce the gap
         for (int gap = n / 2; gap > 0; gap /= 2) {
             for (int i = gap; i < n; i++) {
-                T temp = data[i];
+                T temp = a[i];
                 int j;
 
                 // Perform a gapped insertion sort
-                for (j = i; j >= gap && data[j - gap].compareTo(temp) > 0; j -= gap) {
-                    data[j] = data[j - gap];
+                for (j = i; j >= gap && a[j - gap].compareTo(temp) > 0; j -= gap) {
+                    a[j] = a[j - gap];
                 }
 
-                data[j] = temp;
+                a[j] = temp;
             }
         }
     }
